@@ -1,1 +1,53 @@
-<p>home works!</p>
+<div class="d-flex vh-100 overflow-hidden">
+  
+  <div class="sidebar d-flex flex-column flex-shrink-0 bg-light border-end" 
+       [style.width]="menuAberto ? '250px' : '0px'">
+    
+    <div style="width: 250px; height: 100%; display: flex; flex-direction: column;">
+      
+      <div class="text-center py-4 border-bottom mb-3">
+        <img src="http://localhost:3001/img/ford.png" alt="Ford Logo" style="width: 110px;">
+      </div>
+      
+      <ul class="nav nav-pills flex-column mb-auto px-3">
+        <li class="nav-item mb-2">
+          <a routerLink="/home" class="nav-link" style="background-color: #E6F4F1; color: #00A699; border-radius: 4px; font-weight: 600;">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/dashboard" class="nav-link text-secondary fw-medium" style="border-radius: 4px;">
+            Dashboard
+          </a>
+        </li>
+      </ul>
+
+      <div class="p-3 border-top mt-auto">
+        <a href="javascript:void(0)" (click)="fazerLogout()" class="d-flex align-items-center text-secondary text-decoration-none nav-link-hover">
+          <i class="bi bi-box-arrow-left me-2 text-danger"></i>
+          <strong>Sair</strong>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="flex-grow-1 bg-image position-relative">
+    
+    <button class="btn btn-light position-absolute m-3 shadow z-3" 
+            (click)="toggleMenu()" 
+            style="top: 10px; left: 10px; border-radius: 50%; width: 45px; height: 45px;">
+      <i class="bi bi-list fs-4" style="color: #00A699;"></i>
+    </button>
+    
+    <div class="position-absolute top-50 start-50 translate-middle w-100 text-center px-4 z-2">
+      <div class="card mx-auto shadow-lg border-0" style="max-width: 450px; background-color: rgba(255, 255, 255, 0.95);">
+        <div class="card-body py-5">
+          <h3 class="mb-3" style="color: #00A699; font-weight: 700;">Boas-vindas!</h3>
+          <p class="text-muted mb-0">Utilize o menu lateral para acessar o <strong>Dashboard</strong> e visualizar os dados telemétricos dos veículos da Ford.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

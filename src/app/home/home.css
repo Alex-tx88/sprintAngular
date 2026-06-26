@@ -1,0 +1,19 @@
+.bg-image {
+  background-image: linear-gradient(rgba(45, 87, 83, 0.85), rgba(45, 87, 83, 0.85)), url('http://localhost:3001/img/ranger.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #2d5753;
+}
+
+.sidebar {
+  transition: width 0.3s ease-in-out;
+  overflow-x: hidden; 
+  overflow-y: hidden;
+}
+
+.nav-link:hover, .nav-link-hover:hover {
+  background-color: #f1f3f5;
+  color: #00A699 !important;
+  border-radius: 4px;
+}

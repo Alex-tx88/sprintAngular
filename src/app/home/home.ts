@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrl: './home.css',
 })
 export class Home {
+
+  menuAberto:boolean=true;
+
+  constructor(private router:Router){}
+    
+    fazerLogout() {
+      this.router.navigate(['/login']);
+    }
+
+    toggleMenu(){
+      this.menuAberto = !this.menuAberto;
+
+    }
 
 }

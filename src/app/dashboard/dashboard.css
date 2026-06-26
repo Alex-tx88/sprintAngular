@@ -1,0 +1,33 @@
+/* Bordas suaves para os cartões superiores */
+.outline-card {
+  border: 1px solid #dee2e6 !important;
+  border-radius: 4px;
+}
+
+.numero-card {
+  color: #5BC0DE;
+  font-weight: 600;
+}
+
+.tabela-header {
+  background-color: #003478 !important;
+  color: #ffffff;
+}
+
+.tabela-header th {
+  font-weight: 500;
+  border-bottom: none;
+}
+
+/* --- REGRAS DO MENU LATERAL --- */
+.sidebar {
+  transition: width 0.3s ease-in-out;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.nav-link:hover, .nav-link-hover:hover {
+  background-color: #f1f3f5;
+  color: #00A699 !important;
+  border-radius: 4px;
+}

@@ -1,1 +1,43 @@
-<p>login works!</p>
+<div class="container-fluid vh-100 bg-white">
+  <div class="row h-100 align-items-center justify-content-center">
+    
+    <div class="col-md-6 text-center d-none d-md-block">
+      <img src="http://localhost:3001/img/ranger.png" alt="Ford Ranger" class="img-fluid" style="max-width: 85%;">
+    </div>
+
+    <div class="col-md-4 pe-md-5">
+      
+      <div class="text-center mb-5">
+        <img src="http://localhost:3001/img/ford.png" alt="Ford Logo" style="width: 130px;">
+        <h5 class="mt-4" style="color: #00A699; font-weight: 600;">Boas-vindas</h5>
+      </div>
+
+      <form>
+        <div class="input-group mb-3">
+          <span class="input-group-text bg-white" style="border-right: none;">
+            <i class="bi bi-person text-secondary"></i>
+          </span>
+          <input type="text" class="form-control border-start-0 ps-0" placeholder="Nome de usuário" name="usuario" [(ngModel)]="usuario">
+        </div>
+
+        <div class="input-group mb-4">
+          <span class="input-group-text bg-white" style="border-right: none;">
+            <i class="bi bi-lock text-secondary"></i>
+          </span>
+          <input type="password" class="form-control border-start-0 ps-0" placeholder="Senha" name="senha" [(ngModel)]="senha">
+        </div>
+
+        <div class="form-check form-switch d-flex justify-content-end align-items-center mb-4 pe-2">
+          <label class="form-check-label me-5 text-muted" for="loginAuto" style="font-size: 0.85rem;">Login automaticamente</label>
+          <input class="form-check-input mt-0" type="checkbox" id="loginAuto" style="width: 2.5rem; height: 1.25rem;">
+        </div>
+
+        <div class="d-grid">
+          <button type="button" class="btn text-white py-2" style="background-color: #B2B2B2; border-radius: 4px;" (click)="fazerLogin()">Entrar</button>
+        </div>
+      </form>
+
+    </div>
+    
+  </div>
+</div>

@@ -1,1 +1,132 @@
-<p>dashboard works!</p>
+<div class="d-flex vh-100 overflow-hidden bg-light">
+  
+  <div class="sidebar d-flex flex-column flex-shrink-0 bg-white border-end shadow-sm" 
+       [style.width]="menuAberto ? '250px' : '0px'">
+    
+    <div style="width: 250px; height: 100%; display: flex; flex-direction: column;">
+      <div class="text-center py-4 border-bottom mb-3">
+        <img src="http://localhost:3001/img/ford.png" alt="Ford Logo" style="width: 110px;">
+      </div>
+      
+      <ul class="nav nav-pills flex-column mb-auto px-3">
+        <li class="nav-item mb-2">
+          <a routerLink="/home" class="nav-link text-secondary fw-medium" style="border-radius: 4px;">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/dashboard" class="nav-link" style="background-color: #E6F4F1; color: #00A699; border-radius: 4px; font-weight: 600;">
+            Dashboard
+          </a>
+        </li>
+      </ul>
+
+      <div class="p-3 border-top mt-auto">
+        <a href="javascript:void(0)" (click)="fazerLogout()" class="d-flex align-items-center text-secondary text-decoration-none nav-link-hover">
+          <i class="bi bi-box-arrow-left me-2 text-danger"></i>
+          <strong>Sair</strong>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-grow-1 overflow-auto position-relative">
+    
+    <button class="btn bg-white position-absolute shadow-sm z-3" 
+            (click)="toggleMenu()" 
+            style="top: 15px; left: 15px; border-radius: 50%; width: 45px; height: 45px; border: 1px solid #dee2e6;">
+      <i class="bi bi-list fs-4" style="color: #00A699;"></i>
+    </button>
+
+    <div class="container-fluid pt-4 pb-5 px-md-5 mt-3">
+      
+      <div class="text-center mb-5">
+        <h4 style="color: #003478; font-weight: bold;">Dashboard FORD</h4>
+      </div>
+
+      <div class="row mb-5 justify-content-center">
+        
+        <div class="col-md-2">
+          <div class="card outline-card text-center h-100 py-2 bg-white">
+            <div class="card-body">
+              <h6 class="text-secondary mb-3">Veículo</h6>
+              <select class="form-select border-0 bg-light text-center fw-medium" [(ngModel)]="veiculoSelecionado">
+                <option *ngFor="let veiculo of listaVeiculos" [ngValue]="veiculo">{{ veiculo.vehicle }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="card outline-card text-center h-100 py-2 bg-white">
+            <div class="card-body">
+              <h6 class="text-secondary">Total de Vendas</h6>
+              <h3 class="numero-card mt-2 mb-0" *ngIf="veiculoSelecionado">{{ veiculoSelecionado.volumetotal }}</h3>
+              <small class="text-info">unid</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="card outline-card text-center h-100 py-2 bg-white">
+            <div class="card-body">
+              <h6 class="text-secondary">Conectados</h6>
+              <h3 class="numero-card mt-2 mb-0" *ngIf="veiculoSelecionado">{{ veiculoSelecionado.connected }}</h3>
+              <small class="text-info">unid</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="card outline-card text-center h-100 py-2 bg-white">
+            <div class="card-body">
+              <h6 class="text-secondary">Update Software</h6>
+              <h3 class="numero-card mt-2 mb-0" *ngIf="veiculoSelecionado">{{ veiculoSelecionado.softwareUpdates }}</h3>
+              <small class="text-info">unid</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row mb-5 text-center">
+        <div class="col-12">
+          <img *ngIf="veiculoSelecionado" [src]="veiculoSelecionado.img" alt="Veículo" class="img-fluid" style="height: 220px; object-fit: contain;">
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-11">
+          <table class="table table-bordered text-center align-middle shadow-sm bg-white">
+            <thead class="tabela-header">
+              <tr>
+                <th class="py-3">Código / VIN</th>
+                <th class="py-3">Odômetro</th>
+                <th class="py-3">Nível de Combustível</th>
+                <th class="py-3">Status</th>
+                <th class="py-3">Lat.</th>
+                <th class="py-3">Long.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="p-2" style="width: 250px;">
+                  <input type="text" class="form-control form-control-sm text-center" 
+                         placeholder="Ex: 2FRHDUYS2Y63NHD22454" 
+                         [(ngModel)]="codigoVin" 
+                         (ngModelChange)="onVinChange($event)">
+                </td>
+                <td class="fw-bold text-secondary">{{ dadosTelemetria?.odometro || '-' }}</td>
+                <td class="fw-bold text-secondary">{{ dadosTelemetria?.nivelCombustivel || '-' }}</td>
+                <td class="fw-bold text-secondary">{{ (dadosTelemetria?.status | uppercase) || '-' }}</td>
+                <td class="fw-bold text-secondary">{{ dadosTelemetria?.lat || '-' }}</td>
+                <td class="fw-bold text-secondary">{{ dadosTelemetria?.long || '-' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
