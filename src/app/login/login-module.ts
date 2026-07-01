@@ -6,9 +6,7 @@ import { Login } from './login';
 
 
 @NgModule({
-  declarations: [
-    Login
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     LoginRoutingModule

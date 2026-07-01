@@ -1,0 +1,9 @@
+.btn-hover-verde {
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.btn-hover-verde:hover {
+  background-color: #00A699 !important; /* Cor verde/água do seu painel */
+  border-color: #00A699 !important;
+  cursor: pointer; /* Garante que o mouse fique com a "mãozinha" de clique */
+}

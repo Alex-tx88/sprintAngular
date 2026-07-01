@@ -17,10 +17,9 @@ export class Dashboard implements OnInit {
   dadosTelemetria: any = null;
   vinSubject = new Subject<string>();
 
-  // Variável que controla se o menu lateral está aberto ou fechado
+
   menuAberto: boolean = true;
 
-  // Injetamos o Router no construtor
   constructor(private api: Api, private router: Router) {}
 
   ngOnInit(): void {
@@ -43,14 +42,20 @@ export class Dashboard implements OnInit {
     });
   }
 
-  onVinChange(vin: string) {
-    this.vinSubject.next(vin);
+onVinChange(vin: string) {
+    const vinTratado = vin.trim().toUpperCase();
+    this.vinSubject.next(vinTratado);
   }
-
-  buscarVin(vin: string): void {
+buscarVin(vin: string): void {
     this.api.getDadosVin(vin).subscribe({
-      next: (resposta) => this.dadosTelemetria = resposta,
-      error: () => this.dadosTelemetria = null
+      next: (resposta) => {
+        console.log("Dados recebidos da API:", resposta);
+        this.dadosTelemetria = resposta;
+      },
+      error: (erro) => {
+        console.error("Erro ao buscar o VIN:", erro);
+        this.dadosTelemetria = null;
+      }
     });
   }
 

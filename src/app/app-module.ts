@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing-module';
-
-// 1. ADICIONE ESTAS DUAS LINHAS AQUI NO TOPO:
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -17,13 +15,12 @@ import { Dashboard } from './dashboard/dashboard';
     App,
     Login,
     Home,
-    Dashboard
+    Dashboard // <-- Agora o Angular reconhece todos eles globalmente
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // 2. ADICIONE OS DOIS MÓDULOS AQUI DENTRO:
-    FormsModule,
+    FormsModule, // <-- FormsModule disponível para a aplicação toda!
     HttpClientModule
   ],
   providers: [],
